@@ -1,8 +1,6 @@
 ## Setting up git and cloning files
-1. In your terminal and inside a folder you would like to store this file, type in the terminal of that folder:
-   a. https://github.com/sophp516/vox-sportswear.git
-2. Open the file in vs code, and check to ensure all the files like node_modules, package.json, and the public are there. If you don't have all the correct files, you may need to type this in your terminal:
-   a. npm install
+1. In your terminal and inside a folder you would like to store this file, type in the terminal of that folder: https://github.com/sophp516/vox-sportswear.git
+2. Open the file in vs code, and check to ensure all the files like node_modules, package.json, and the public are there. If you don't have all the correct files, you may need to type this in your terminal: npm install
 
 
 ## How to get to the website
