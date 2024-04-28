@@ -39,12 +39,19 @@ Merge from a different branch
 
 ## List of Helfpul Git Commands
 git add . to add contents of entire directory
+
 git commit -am "message in quotes" to commit files all added files with a message
+
 git status to check the status of files in the directory
+
 git push to push all commits to the repository
+
 git clone <url> to clone a repository
+
 git checkout -b <branchname> to create a new branch with name <branchname>
+
 git checkout <branchname> to checkout an existing branch
+
 git branch -d <branchname> to delete the local branch
 git branch to see what branch you are on and all of the other local branches in your project
 git checkout <file> to discard changes to that file in the current branch
