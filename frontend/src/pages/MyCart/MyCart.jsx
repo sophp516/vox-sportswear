@@ -25,7 +25,9 @@ const MyCart = () => {
            {cartProducts.map((product)=>(
                 <div key={product.id}>
                     <p>{product.productName}</p>
-                    <img />
+                    <img src='/assets/mockimg.png' width="100px" />
+                    <p>{product.price}</p>
+                    <p>{product.size}</p>
                 </div>
            ))}
         </div>
