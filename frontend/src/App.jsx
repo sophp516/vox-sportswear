@@ -25,6 +25,7 @@ function App() {
           <Route path="/mycart" element={<MyCart/>}/>
           <Route path="/homepage" element={<Homepage/>}/>
           <Route path="/myaccount" element={<MyAccount/>}/>
+          <Route path="/" element={<Homepage/>}/>
         </Routes>
       </Router>
     </>

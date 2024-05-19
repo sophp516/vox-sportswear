@@ -10,11 +10,10 @@ const Navbar = () => {
 
     return (
         <div className="navbar">
-            <NavLink to="/">Home</NavLink>
-            <NavLink to="/aboutus">AboutUs</NavLink>
-            <NavLink to="/mycart">MyCart</NavLink>
-            <NavLink to="/products">Products</NavLink>
-            <NavLink to="/myaccount">{auth.currentUser ? auth.currentUser.displayName : "MyAccount"}</NavLink>
+            <NavLink className="inactive" activeClassName="active" to="/">Home</NavLink>
+            <NavLink className="inactive" activeClassName="active" to="/aboutus">AboutUs</NavLink>
+            <NavLink className="inactive" activeClassName="active" to="/products">Products</NavLink>
+            <NavLink className="inactive" activeClassName="active" to="/mycart">{auth.currentUser ? auth.currentUser.displayName : "MyAccount"} / Cart</NavLink>
         </div>
     )
 }

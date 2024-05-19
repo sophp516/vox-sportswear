@@ -37,12 +37,15 @@ const Products = () => {
                 <ViewProduct selectedProduct={selectedProduct} setViewProduct={setViewProduct}/>
             </div> 
             : 
-            <div>
+            <div className="products-holder">
                 {products.map((product)=>(
-                    <div key={product.id}>
-                        <button onClick={ () => handleViewClick (product.id)}>
-                            <img src='/assets/mockimg.png' width="100px"/>
-                            <p>{product.productName}</p>
+                    <div className="product-card" key={product.id}>
+                        <button id="product-page-button" onClick={ () => handleViewClick (product.id)}>
+                            <img src='/assets/mockimg.png' width="200px"/>
+                            <div>
+                                <p>{product.productName}</p>
+                                <p>$ {product.price}</p>
+                            </div>
                         </button>
                     </div>
                 ))} 
