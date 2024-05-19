@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
-import { initFirebase } from "../../services/datastore.js";
+import { useEffect, useState } from "react";
+import { initFirebase, getAllCart } from "../../services/datastore.js";
 import { getAuth } from 'firebase/auth';
 import './Navbar.css'
 
@@ -7,14 +8,33 @@ const Navbar = () => {
 
     const app = initFirebase();
     const auth = getAuth(app);
+    const [cartProducts, setCartProducts] = useState([]);
+
+    useEffect(()=>{
+        getAllCart((getItems)=>{
+            if(getItems){
+                const cartArray = Object.keys(getItems).map((key)=>(
+                    {
+                        id: key,
+                        ...getItems[key]
+                    }
+                ))
+                setCartProducts(cartArray);
+            }
+        })
+    }, [])
 
     return (
         <div className="navbar">
-            <NavLink to="/">Home</NavLink>
-            <NavLink to="/aboutus">AboutUs</NavLink>
-            <NavLink to="/mycart">MyCart</NavLink>
-            <NavLink to="/products">Products</NavLink>
-            <NavLink to="/myaccount">{auth.currentUser ? auth.currentUser.displayName : "MyAccount"}</NavLink>
+            <NavLink className="inactive" activeClassName="active" to="/">Home</NavLink>
+            <NavLink className="inactive" activeClassName="active" to="/aboutus">AboutUs</NavLink>
+            <NavLink className="inactive" activeClassName="active" to="/products">Products</NavLink>
+            <NavLink className="inactive" activeClassName="active" to="/mycart">
+            {auth.currentUser ? auth.currentUser.displayName : "MyAccount"} / Cart
+                <div className="cart-length-container">
+                    {cartProducts.length > 0 && <span className="length-span">{cartProducts.length}</span>}
+                </div>
+            </NavLink>
         </div>
     )
 }

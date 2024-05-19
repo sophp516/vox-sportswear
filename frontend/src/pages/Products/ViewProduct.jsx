@@ -3,8 +3,9 @@
 import { get } from 'firebase/database';
 import Navbar from '../../components/Navbar/Navbar';
 import { addToCart, getSpecificProduct } from '../../services/datastore';
-import React,{useEffect, useState } from 'react';
-import "./Products.css"
+import React, {useEffect, useState } from 'react';
+import './Products.css'
+
 
 const ViewProduct =(props) => {
     const [productInfo, setProductInfo] = useState([]);

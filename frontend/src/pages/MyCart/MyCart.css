@@ -1,0 +1,46 @@
+.cart {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10%;
+    margin-top: 5%;
+}
+
+.cart-card {
+    display: flex;
+    flex-direction: row;
+    width: 500px;
+}
+
+.cart-inner-description {
+    margin-left: 2%;
+}
+
+.cart-main {
+    display: flex;
+    flex-direction: row;
+}
+
+.quantity-btn-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.right-cart-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.delete-from-cart {
+    margin-left: 100%;
+}
+
+.q-p {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.quantity-btn-container > button {
+    width: 20px;
+    height: 20px;
+}

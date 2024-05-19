@@ -64,3 +64,10 @@ export function addToCart(id, product, size){
       description: product.description,
   })
 }
+
+export function updateCartQuantity(id, newQuantity) {
+  const reference = ref(db, 'Cart/' + id);
+  update(reference, {
+    quantity: newQuantity
+  })
+}
