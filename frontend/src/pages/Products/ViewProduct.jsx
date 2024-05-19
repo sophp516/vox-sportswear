@@ -29,13 +29,18 @@ const ViewProduct =(props) => {
         setSize(e.target.value);
     }
     
-    const handlePurcahse =() =>{
-        addToCart(props.selectedProduct,productInfo,size);
+    const handlePurchase =() =>{
+        if (size) {
+            addToCart(props.selectedProduct,productInfo,size);
+        } else {
+            alert("select size")
+        }
     }
+
     return(
         <div>
             <ul id="layout">
-                <li class="layout-item">
+                <li className="layout-item">
                     <button onClick={handleBack}>Back</button>
                     <p id="p-name">{productInfo.productName}</p>
                     <p id="p-desc">{productInfo.description}</p>
@@ -49,7 +54,7 @@ const ViewProduct =(props) => {
                             <option>L</option>
                             <option>XL</option>
                     </select>
-                    <button onClick={handlePurcahse}>Purchase</button>
+                    <button onClick={handlePurchase}>Purchase</button>
                 </li>
             </ul>
         </div>

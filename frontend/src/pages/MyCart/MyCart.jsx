@@ -2,7 +2,7 @@
 import Navbar from '../../components/Navbar/Navbar';
 import MyAccount from '../../auth/MyAccount';
 import './MyCart.css'
-import { getAllCart, updateCartQuantity } from '../../services/datastore';
+import { getAllCart, updateCartQuantity, deleteFromCart } from '../../services/datastore';
 import { useEffect, useState } from 'react';
 
 const MyCart = () => {
@@ -46,7 +46,7 @@ const MyCart = () => {
                     <div className="cart-card" key={product.id}>
                         <img src='/assets/mockimg.png' width="150px" />
                         <div className="cart-inner-description">
-                            <button id="delete-from-cart">x</button>
+                            <button id="delete-from-cart" onClick={() => deleteFromCart(product.id)}>x</button>
                             <p>{product.productName}</p>
                             <p>$ {product.price}</p>
                             <p>{product.size}</p>
