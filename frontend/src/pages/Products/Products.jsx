@@ -42,7 +42,7 @@ const Products = () => {
                     <div className="product-card" key={product.id}>
                         <button id="product-page-button" onClick={ () => handleViewClick (product.id)}>
                             <img src='/assets/mockimg.png' width="200px"/>
-                            <div>
+                            <div className='product-upper-border'>
                                 <p>{product.productName}</p>
                                 <p>$ {product.price}</p>
                             </div>

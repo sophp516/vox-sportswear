@@ -3,11 +3,18 @@
     padding-bottom: 2px;
     display: flex;
     flex-direction: row;
-    width: 100%;
     justify-content: space-between;
     align-items: center;
     border-bottom: 2px solid black;
     background-color: var(--color0);
+}
+
+.navbar:first-child {
+    padding-left: 10px;
+}
+
+.navbar:last-child {
+    padding-right: 20px;
 }
 
 .inactive {
@@ -22,4 +29,22 @@
 .active {
     color: #fff;
     text-decoration: none;
-  }
+}
+
+.cart-length-container {
+    padding: none;
+    margin-left: 5px;
+    display: inline-block;
+    background-color: #fff;
+    border-radius: 20px;
+    padding-right: 5px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    color: black;
+}
+
+.length-span {
+    display: flex;
+    font-size: 10px;
+    margin-left: 5px;
+}

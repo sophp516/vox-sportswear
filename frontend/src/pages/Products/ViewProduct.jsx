@@ -37,7 +37,7 @@ const ViewProduct =(props) => {
            <div className="view-product-inner">
             <img src='/assets/mockimg.png' width="400px"/>
             <div className="view-product-inner-description">
-            <p>{productInfo.productName}</p>
+            <p className="info-name">{productInfo.productName}</p>
             <p>{productInfo.description}</p>
             <p>${productInfo.price}</p>
             <select onChange={handleSelectedSize} value={size}>
