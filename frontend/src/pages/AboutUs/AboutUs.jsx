@@ -8,7 +8,9 @@ const AboutUs = () => {
 
     return (
         <div>
-            <Navbar />
+            <div>
+            <Navbar/>
+            </div>
             <div>
             <h2>Who We Are</h2>
             <h4>Mission</h4>
@@ -23,31 +25,42 @@ const AboutUs = () => {
             <p>Our relationships with local wholesalers and printers allow us to guarantee lower prices 
                 and quicker turnaround than any other supplier, while supporting local artists.</p>
             
+           
+            <h2>Process</h2>
+            <p>Real people working with you from start to finish.</p>
+               
             <div className='process-container'>
-                <h2>Process</h2>
-                <p>Real people working with you from start to finish.</p>
-                
+                <div className='item'>
                 <h4>Work with a Vox Rep</h4>
                 <p>Working one-on-one with you through every step, 
                     your Vox rep will ensure top quality at an unbeatable price.</p>
+                </div>
 
+
+                <div className='item'>
                 <h4>Pick Your Products</h4>
                 <p>Check out our catalog and our featured products to see some of our 
                     offerings. Or let us find the perfect item for you.</p>
+                </div>
 
 
+                <div className='item'>
                 <h4>Finalize Your Design</h4>
                 <p>We'll work with what you have or come up with something from scratch. 
                     Our design team's eager to make your ideas a reality.</p>
+                </div>
 
+                <div className='item'>
                 <h4>Review and Pay</h4>
                 <p>Once you're happy with your order, you can pay 
                     securely through our easy online system.</p>
+                </div>
 
+                <div className='item'>
                 <h4>Get Your Gear</h4>
                 <p>Your items will arrive at your door about 
                     two weeks from when your order's finalized. Rush orders available .</p>
-            
+                </div>
             </div>
             </div>
 

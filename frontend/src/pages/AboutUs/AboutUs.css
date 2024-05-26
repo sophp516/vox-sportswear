@@ -1,0 +1,16 @@
+/* templates: https://www.w3schools.com/w3css/tryw3css_templates_start_page.htm#*/
+
+h4, p, h2 {
+    text-align: center;
+} 
+
+
+
+.process-container {
+    display: flex;
+}
+
+.item {
+    padding: 5px;
+    background-color: lightblue;
+}
