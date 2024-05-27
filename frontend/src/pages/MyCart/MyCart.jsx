@@ -34,6 +34,9 @@ const MyCart = () => {
             });
         });
     }
+    const handle_delete = (id) => {
+        
+    }
 
     return (
         <div>
