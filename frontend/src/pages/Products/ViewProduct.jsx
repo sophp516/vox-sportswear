@@ -4,8 +4,7 @@ import { get } from 'firebase/database';
 import Navbar from '../../components/Navbar/Navbar';
 import { addToCart, getSpecificProduct } from '../../services/datastore';
 import React, {useEffect, useState } from 'react';
-import './Products.css'
-
+import './ViewProducts.css'
 
 const ViewProduct =(props) => {
     const [productInfo, setProductInfo] = useState([]);
@@ -39,13 +38,16 @@ const ViewProduct =(props) => {
 
     return(
         <div>
-            <ul id="layout">
-                <li className="layout-item">
-                    <button onClick={handleBack}>Back</button>
-                    <p id="p-name">{productInfo.productName}</p>
-                    <p id="p-desc">{productInfo.description}</p>
-                    <img src='/assets/mockimg.png' width="100px"/>
-                    <p id="p-price">${productInfo.price}</p>
+            <div className='view-product'>
+                <button id= "back-btn" onClick={handleBack}>Back</button>
+                <div className='view-product-wrapper'>
+                 <div>
+                 <img src='/assets/mockimg.png' width="100px" id = "product-img"/>
+                 </div>
+                <div>
+                    <h2 id="prod-name">{productInfo.productName}</h2>
+                    <p id="prod-desc">{productInfo.description}</p>
+                    <p id="prod-price">${productInfo.price}</p>
                     <select onChange={handleSelectedSize} value={size}>
                             <option>Select Size</option>
                             <option>XS</option>
@@ -54,9 +56,10 @@ const ViewProduct =(props) => {
                             <option>L</option>
                             <option>XL</option>
                     </select>
-                    <button onClick={handlePurchase}>Purchase</button>
-                </li>
-            </ul>
+                    <button id= 'purchase-btn' onClick={handlePurchase}>Purchase</button>
+                </div>
+                    </div>
+            </div>
         </div>
     )
 }

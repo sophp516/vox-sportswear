@@ -1,0 +1,67 @@
+/* Base settings for the product view */
+.view-product {
+    color: #000;
+    background-color: #fff;
+    font-family: 'Arial', sans-serif;
+    padding: 20px;
+    border-radius: 8px;
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  */
+    margin: auto;
+
+
+}
+#back-btn{
+    left: 1rem;
+    border: 1px solid black;
+    width: 5rem;
+}
+.view-product-wrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+/* Select size dropdown styling */
+select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 20px;
+    border: 1px solid #000;
+    background-color: #fff;
+    color: #000;
+    appearance: none; /* Removes default styling from select in WebKit browsers */
+    border-radius: 4px;
+}
+
+/* Button styling for actions */
+button {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #333; /* Darken button on hover for better user experience */
+}
+
+/* Additional button styling for the back button to make it less prominent */
+button:first-of-type {
+    background-color: #fff;
+    color: #000;
+    margin-bottom: 20px;
+}
+#product-img{
+    width: 30rem;
+
+}
+#purchase-btn{
+    border: 1px solid black;
+    background:black;
+    color: white;  
+    
+}

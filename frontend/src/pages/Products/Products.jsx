@@ -36,7 +36,7 @@ const Products = () => {
             {viewProduct ? (
                 <div>
                     <h3 className="all-clothing-title">
-                        ALL CLOTHING
+                        {/* ALL CLOTHING */}
                     </h3>
                     <ViewProduct selectedProduct={selectedProduct} setViewProduct={setViewProduct} />
                 </div>
