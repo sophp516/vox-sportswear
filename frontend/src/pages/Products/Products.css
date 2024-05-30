@@ -1,30 +1,54 @@
-.products-holder {
+#layout {
     display: flex;
-    flex-wrap: wrap;
-    margin-top: 20px;
-}
-
-.products-holder {
-    margin-left: 20px;
-    margin-right: 20px;
-}
-
-#product-page-button {
-    background-color: white;
-    border: 0.5px solid black;
-    min-width: 200px;
-}
-
-.view-products {
-    margin: 10px;
-    width: 100%;
-    height: 100%;
-}
-
-.view-product-inner {
-    display: flex;
+    justify-content: space-around;
     flex-direction: row;
+    flex-wrap: wrap;
+    text-align: center;
 }
 
-.view-product-inner-description {
+.layout-item {
+    background-color: whitesmoke;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    width: 300px;
+    height: 500px;
+    transition: 0.5s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+    cursor: pointer; /* Add cursor pointer for clickable items */
+}
+
+.layout-item:hover {
+    transform: scale(1.15);
+    border-radius: 20px;
+}
+
+.p-name {
+    text-align: center;
+    font-size: 25px;
+    margin-bottom: 0;
+    margin-top: 0;
+    font-weight: 500;
+}
+
+.p-price {
+    font-weight: 400;
+    font-size: 15px;
+    margin-top: 0;
+    text-align: center;
+}
+
+.all-clothing-title {
+    font-size: 40px;
+    text-align: center;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.layout-item img {
+    border-radius: 8px;
+    transition: transform 0.3s;
 }

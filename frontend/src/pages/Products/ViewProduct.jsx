@@ -6,6 +6,7 @@ import { addToCart, getSpecificProduct } from '../../services/datastore';
 import React, {useEffect, useState } from 'react';
 import './Products.css'
 
+
 const ViewProduct =(props) => {
     const [productInfo, setProductInfo] = useState([]);
     const [size, setSize] = useState();
@@ -28,29 +29,34 @@ const ViewProduct =(props) => {
         setSize(e.target.value);
     }
     
-    const handlePurcahse =() =>{
-        addToCart(props.selectedProduct,productInfo,size);
+    const handlePurchase =() =>{
+        if (size) {
+            addToCart(props.selectedProduct,productInfo,size);
+        } else {
+            alert("select size")
+        }
     }
+
     return(
-        <div className="view-products">
-           <button onClick={handleBack}>Back</button>
-           <div className="view-product-inner">
-            <img src='/assets/mockimg.png' width="400px"/>
-            <div className="view-product-inner-description">
-            <p>{productInfo.productName}</p>
-            <p>{productInfo.description}</p>
-            <p>${productInfo.price}</p>
-            <select onChange={handleSelectedSize} value={size}>
-                <option>Select Size</option>
-                <option>XS</option>
-                <option>S</option>
-                <option>M</option>
-                <option>L</option>
-                <option>XL</option>
-            </select>
-            <button onClick={handlePurcahse}>Add to Cart</button>
-            </div>
-           </div>
+        <div>
+            <ul id="layout">
+                <li className="layout-item">
+                    <button onClick={handleBack}>Back</button>
+                    <p id="p-name">{productInfo.productName}</p>
+                    <p id="p-desc">{productInfo.description}</p>
+                    <img src='/assets/mockimg.png' width="100px"/>
+                    <p id="p-price">${productInfo.price}</p>
+                    <select onChange={handleSelectedSize} value={size}>
+                            <option>Select Size</option>
+                            <option>XS</option>
+                            <option>S</option>
+                            <option>M</option>
+                            <option>L</option>
+                            <option>XL</option>
+                    </select>
+                    <button onClick={handlePurchase}>Purchase</button>
+                </li>
+            </ul>
         </div>
     )
 }

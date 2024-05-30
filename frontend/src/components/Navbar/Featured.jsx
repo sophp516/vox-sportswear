@@ -5,7 +5,8 @@ const Featured = () => {
 
         <div>
         
-            <p className='header'> Vox Sportswear</p>
+           
+            {/* <img className='logo' src="../../public/assets/image-2.png" />  */}
             <img className = 'baker' src="../../public/assets/baker.png" />
             
 
