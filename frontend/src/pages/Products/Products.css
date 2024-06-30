@@ -20,7 +20,7 @@
 }
 
 .layout-item:hover {
-    transform: scale(1.15);
+    transform: scale(1.03);
     border-radius: 20px;
 }
 

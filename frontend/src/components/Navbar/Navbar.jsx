@@ -26,7 +26,10 @@ const Navbar = () => {
 
     return (
         <div className="navbar">
-            <NavLink className="inactive" activeClassName="active" to="/">Home</NavLink>
+           <div className="div1"> 
+           <img className='logo' src="../../public/assets/image-2.png"></img>
+            <NavLink className="inactive" activeClassName="active" to="/">Home</NavLink> 
+            </div>
             <NavLink className="inactive" activeClassName="active" to="/aboutus">AboutUs</NavLink>
             <NavLink className="inactive" activeClassName="active" to="/products">Products</NavLink>
             <NavLink className="inactive" activeClassName="active" to="/mycart">
