@@ -12,4 +12,6 @@
 }
 
 
-
+.slide-container{
+    display: flex;
+}

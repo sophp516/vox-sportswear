@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Homepage from './pages/Homepage/Homepage.jsx';
 import AboutUs from './pages/AboutUs/AboutUs.jsx';
@@ -7,6 +8,7 @@ import MyAccount from './auth/MyAccount.jsx';
 import { initFirebase } from './services/datastore.js';
 import { getAuth } from 'firebase/auth';
 import './App.css'
+import Account from './pages/Account/Account.jsx';
 
 function App() {
 
@@ -24,6 +26,7 @@ function App() {
           <Route path="/products" element={<Products/>}/>
           <Route path="/mycart" element={<MyCart/>}/>
           <Route path="/homepage" element={<Homepage/>}/>
+          <Route path="/account" element={<Account/>}/>
           <Route path="/myaccount" element={<MyAccount/>}/>
           <Route path="/" element={<Homepage/>}/>
         </Routes>

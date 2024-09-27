@@ -1,0 +1,14 @@
+/* Reset padding and margin to remove browser default spacing */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%; /* Sets the minimum height of the html and body to be 100% of the viewport */
+    width: 100%;  /* Sets the width to cover the full viewport */
+}
+
+/* Ensures the content sizes to fit the viewport */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Uses viewport height units to ensure minimum height matches the viewport */
+}

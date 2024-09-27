@@ -3,18 +3,28 @@
     padding-bottom: 5px;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     align-items: center;
     border-bottom: 1px solid black;
-    background-color: var(--color0);
+    background-color: #084818;
 }
 
+.nav-buttons-wrap{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+}
+#nav-btn{
+    padding: 20px;
+}
 .navbar:first-child {
     padding-left: 10px;
 }
 
 .navbar:last-child {
-    padding-right: 40px;
+    padding-right: 0px;
 }
 
 .inactive {

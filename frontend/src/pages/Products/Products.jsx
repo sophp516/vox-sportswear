@@ -33,6 +33,7 @@ const Products = () => {
     return (
         <div>
             <Navbar />
+
             {viewProduct ? (
                 <div>
                     <h3 className="all-clothing-title">

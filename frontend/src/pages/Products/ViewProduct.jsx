@@ -6,6 +6,8 @@ import { addToCart, getSpecificProduct } from '../../services/datastore';
 import React, {useEffect, useState } from 'react';
 import './ViewProducts.css'
 
+
+// TO DO: Implement multi image display
 const ViewProduct =(props) => {
     const [productInfo, setProductInfo] = useState([]);
     const [size, setSize] = useState();
@@ -38,14 +40,14 @@ const ViewProduct =(props) => {
 
     return(
         <div>
-            <div className='view-product'>
-                <button id= "back-btn" onClick={handleBack}>Back</button>
+            <button id= "back-btn" onClick={handleBack}>Back</button>
+            <div className='view-product' >
+                <h2 id="prod-name">{productInfo.productName}</h2>
                 <div className='view-product-wrapper'>
                  <div>
                  <img src='/assets/mockimg.png' width="100px" id = "product-img"/>
                  </div>
-                <div>
-                    <h2 id="prod-name">{productInfo.productName}</h2>
+                <div className='product-information-wrapper'>
                     <p id="prod-desc">{productInfo.description}</p>
                     <p id="prod-price">${productInfo.price}</p>
                     <select onChange={handleSelectedSize} value={size}>
