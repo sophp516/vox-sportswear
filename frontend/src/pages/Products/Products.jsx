@@ -33,10 +33,11 @@ const Products = () => {
     return (
         <div>
             <Navbar />
+
             {viewProduct ? (
                 <div>
                     <h3 className="all-clothing-title">
-                        ALL CLOTHING
+                        {/* ALL CLOTHING */}
                     </h3>
                     <ViewProduct selectedProduct={selectedProduct} setViewProduct={setViewProduct} />
                 </div>
@@ -45,7 +46,7 @@ const Products = () => {
                     <ul id="layout">
                         {products.map((product) => (
                             <li key={product.id} className="layout-item" onClick={() => handleViewClick(product.id)}>
-                                <img src='/assets/mockimg.png' width="250px" height="400px" alt={product.productName} />
+                                <img src='/assets/mockimg.png' width="350px" height="400px" alt={product.productName} />
                                 <p className="p-name">{product.productName}</p>
                                 <p className="p-price">${product.price}</p>
                             </li>

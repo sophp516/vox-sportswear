@@ -1,0 +1,17 @@
+.baker {
+    position: relative;
+    width: 100%;
+    height: 70%;
+}
+
+.header{
+    position: absolute;
+    z-index: 1000;
+    color: aliceblue;
+    
+}
+
+
+.slide-container{
+    display: flex;
+}

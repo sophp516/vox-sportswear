@@ -68,7 +68,7 @@ export function addToCart(id, product, size){
 
 export function deleteFromCart(id) {
   const reference = ref(db,'Cart/' + id);
-  remove(reference)
+  remove(reference);
 }
 
 export function updateCartQuantity(id, newQuantity) {
