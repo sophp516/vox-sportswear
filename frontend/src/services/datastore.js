@@ -3,77 +3,126 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import {
-  getDatabase, ref, set, update, remove, onValue, push
-} from 'firebase/database';
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+  getFirestore, collection, doc, getDoc, getDocs, addDoc, setDoc, deleteDoc, updateDoc, onSnapshot
+} from 'firebase/firestore';
+import { getStorage, ref, uploadBytes, getDownloadURL, deleteObject } from "firebase/storage";
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyAM8MginmCIDm3wF84yEO3OyOTw2tcB49I",
-  authDomain: "vox-sportswear.firebaseapp.com",
-  projectId: "vox-sportswear",
-  storageBucket: "vox-sportswear.appspot.com",
-  messagingSenderId: "111797782567",
-  appId: "1:111797782567:web:a929b40c1e066739bbe602",
-  measurementId: "G-5FMNH39JTE"
+  apiKey: `${import.meta.env.VITE_FIREBASE_API_KEY}`,
+  authDomain: `${import.meta.env.VITE_FIREBASE_AUTH_DOMAIN}`,
+  projectId: `${import.meta.env.VITE_FIREBASE_PROJECT_ID}`,
+  storageBucket: `${import.meta.env.VITE_FIREBASE_STORAGE_BUCKET}`,
+  messagingSenderId: `${import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID}`,
+  appId: `${import.meta.env.VITE_FIREBASE_APP_ID}`,
+  measurementId: `${import.meta.env.VITE_FIREBASE_MEASUREMENT_ID}`
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-const db = getDatabase(app);
+const db = getFirestore(app);
+const storage = getStorage(app)
 
 export const initFirebase = () => {
     return app;
 }
 
 /* Returns all clothing data from database */
-export function getAllProducts(callback = () => {}){
-  const reference = ref(db, "Products/");
-  onValue(reference,(snapshot) => {
-    const products = snapshot.val();
-    callback(products); 
-})
+export async function getAllProducts(){
+  const reference = collection(db, "Products");
+  const data = await getDocs(reference);
+  return data;
 }
 
-export function getSpecificProduct(productID, callback = ()=>{}){
-  const reference = ref(db, "Products/" + productID);
-  onValue(reference,(snapshot) => {
-    const product = snapshot.val();
-    callback(product); 
-})
+export async function getSpecificProduct(productID){
+  const reference = doc(db, "Products", productID);
+  const data = await getDoc(reference);
+  return data;
 }
 
-export function getAllCart(callback = ()=>{}){
-  const reference = ref(db, "Cart/");
-  onValue(reference,(snapshot) => {
-    const cartItems = snapshot.val();
-    callback(cartItems); 
-  })
+export function getAllCart(userID, callback = () => {}){
+  const reference = collection(db, "Users", userID, "Cart");
+  const cancel = onSnapshot(reference, (snapshot) => {
+    callback(snapshot);
+  });
+  return cancel; 
 }
 
-export function addToCart(id, product, size){
-  const reference = ref(db,'Cart/' + id);
-  set(reference, {
-      productName: product.productName,
-      price: product.price,
-      size: size,
-      id: id,
-      description: product.description,
-      quantity: 1
-  })
+export async function getSpecificCartItem(userID, cartItemID){
+  const reference = doc(db, "Users", userID, "Cart", cartItemID);
+  const data = await getDoc(reference);
+  return data;
 }
 
-export function deleteFromCart(id) {
-  const reference = ref(db,'Cart/' + id);
-  remove(reference)
+export async function addToCart(userID, productID, formData){
+  const reference = collection(db, "Users", userID, "Cart");
+  const cartItem = { 
+    productID,
+    size: formData.size,
+    color: formData.color,
+    customization: formData.customization,
+    quantity: 1,
+    imageURL: null,
+    imageName: null,
+  }
+  const docRef = await addDoc(reference, cartItem);
+  if(formData.image){
+    const url = await uploadImage(userID, formData.image);
+    await updateDoc(docRef, {imageURL: url, imageName: formData.image.name});
+  }
 }
 
-export function updateCartQuantity(id, newQuantity) {
-  const reference = ref(db, 'Cart/' + id);
-  update(reference, {
+export async function deleteFromCart(userID, cartItemID, imageName) {
+  const reference = doc(db, "Users", userID, "Cart", cartItemID);
+  await deleteDoc(reference);
+  if(imageName){
+    console.log(imageName);
+    await deleteImageFromStorage(userID, imageName);
+  }
+}
+
+export async function updateCartQuantity(userID, cartItemID, newQuantity) {
+  const reference = doc(db, "Users", userID, "Cart", cartItemID);
+  await updateDoc(reference, {
     quantity: newQuantity
   })
+}
+
+export async function addOrder(userID, userEmail, items){
+  const orderReference = collection(db, "Orders");
+  const orderItem = {
+    userEmail,
+    items,
+  }
+  await addDoc(orderReference, orderItem);
+
+  const historyReference = collection(db, "Users", userID, "Order History");
+  await addDoc(historyReference, orderItem);
+}
+
+export async function getUserData(userID){
+  const reference = doc(db, "Users", userID);
+  const data = await getDoc(reference);
+  return data;
+}
+
+export async function getOrders(callback = () => {}){
+  const reference = collection (db, "Orders");
+  const cancel = onSnapshot(reference, (snapshot) => {
+    callback(snapshot);
+  })
+}
+
+async function uploadImage(userID, image) {
+  if(!image){
+    return;
+  }
+  const imageRef = ref(storage, `Users/${userID}/Cart/${image.name}`);
+  const upload = await uploadBytes(imageRef, image);
+  const url = await getDownloadURL(upload.ref);
+  return url;
+}
+
+async function deleteImageFromStorage(userID, imageName){
+  const imageRef = ref(storage, `Users/${userID}/Cart/${imageName}`);
+  await deleteObject(imageRef);
 }
